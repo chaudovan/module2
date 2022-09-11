@@ -1,3 +1,4 @@
+package ss1_introduction_to_java;
 import java.util.Scanner;
 public class ChuyenDoiTienTe {
     public static void main(String[] args) {
