@@ -19,13 +19,18 @@ public class XoaPhanTu {
     }
     public static int[] xoaIndex(int[] arr, int x){
         int[] arrNew = new int[arr.length-1];
-        for (int i = 0; i <arrNew.length ; i++) {
+        int index=0;
+        for (int i = 0; i <arr.length ; i++) {
             if(arr[i]==x){
-                for (int j = i; j <arrNew.length ; j++) {
-                    arrNew[j] = arr[j+1];
-                }
-            }else{
+                index =i;
+                break;
+            }
+        }
+        for (int i = 0; i <arrNew.length ; i++) {
+            if(i<index){
                 arrNew[i] = arr[i];
+            }else {
+                arrNew[i] = arr[i+1];
             }
         }
         return arrNew;
