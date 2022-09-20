@@ -1,6 +1,6 @@
 package ss4_object.stop_watch;
 
-public class main {
+public class StopWatchTest {
     public static void main(String[] args) {
         long start =System.currentTimeMillis();
         int[] arr = new int[100000];

@@ -1,6 +1,6 @@
 package ss4_object.fan;
 
-public class main {
+public class FanTest {
     public static void main(String[] args) {
         Fan fan3 = new Fan();
         Fan fan1 = new Fan(3,true,10,"Yellow");

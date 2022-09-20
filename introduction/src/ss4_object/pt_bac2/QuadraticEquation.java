@@ -5,11 +5,6 @@ public class QuadraticEquation {
     public QuadraticEquation(){
 
     }
-//    public QuadraticEquation(int a,int b,int c){
-//        a=a;
-//        b=b;
-//        c=c;
-//    }
 
     public QuadraticEquation(int a, int b, int c) {
         this.a = a;
