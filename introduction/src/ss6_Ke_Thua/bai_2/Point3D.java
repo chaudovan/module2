@@ -29,6 +29,7 @@ public class Point3D extends Point2D{
         arr[2] = getZ();
         return arr;
     }
+    @Override
     public String toString(){
         String status = "(" +getX() + "," +getY() + "," +getZ() + ")";
         return status;

@@ -26,6 +26,7 @@ public class Square  extends Rectangle {
     public void setLength(double length){
         setSide(length);
     }
+    @Override
     public String toString(){
         String status = "A Square with side = " + getSide() + " , which is a subclass off " +super.toString();
         return status;
