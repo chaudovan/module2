@@ -21,32 +21,7 @@ public class ProductList {
     }
     public void editProduct(int index,Product newProduct){
         this.productList.set(index,newProduct);
-//        Scanner sc = new Scanner(System.in);
-//        System.out.println("nhập tên sản phẩm mới");
-//        String nameProduct = sc.nextLine();
-//        System.out.println("Nhập giá sản phẩm mới");
-//        double price = sc.nextDouble();
-//        for (int i = 0; i <productList.size() ; i++) {
-//            if(productList.get(i).getId()==id){
-//                productList.get(i).setNameProduct(nameProduct);
-//                productList.get(i).setPrice(price);
-//                break;
-//            }
-//        }
-//        for(Product product:productList){
-//            String getId = product.getId();
-//            if(getId==id){
-//                System.out.println("nhập tên sản phẩm mới");
-//                String nameProduct = sc.nextLine();
-//                System.out.println("Nhập giá sản phẩm mới");
-//                double price = sc.nextDouble();
-//                product.setNameProduct(nameProduct);
-//                product.setPrice(price);
-//            }
-//        }
-//        if(index==0){
-//            System.out.println("Mã sản phẩm không tồn tại");
-//        }
+//        
     }
     public int checkID(String id){
         for (int i = 0; i <productList.size() ; i++) {

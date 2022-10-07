@@ -21,7 +21,6 @@ public class StackTest {
         for (int i = 0; i <arrInterger.length ; i++) {
             System.out.print(inter.pop()+ " ");
         }
-
     }
     public static void stackOfString(){
         MyStack<String> stringMyStack = new MyStack<>();
