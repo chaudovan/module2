@@ -21,7 +21,7 @@ public class ProductList {
     }
     public void editProduct(int index,Product newProduct){
         this.productList.set(index,newProduct);
-//        
+//
     }
     public int checkID(String id){
         for (int i = 0; i <productList.size() ; i++) {

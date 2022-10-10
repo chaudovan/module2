@@ -4,7 +4,7 @@ import java.util.Date;
 
 public abstract class Person {
     private String name;
-    private Date birtthDay;
+    private double birtthDay;
     private String gender;
     private int numberIdentity;
     private int numberPhone;
@@ -13,7 +13,7 @@ public abstract class Person {
     public Person() {
     }
 
-    public Person(String name, Date birtthDay, String gender, int numberIdentity, int numberPhone, String email) {
+    public Person(String name, double birtthDay, String gender, int numberIdentity, int numberPhone, String email) {
         this.name = name;
         this.birtthDay = birtthDay;
         this.gender = gender;
@@ -30,11 +30,11 @@ public abstract class Person {
         this.name = name;
     }
 
-    public Date getBirtthDay() {
+    public double getBirtthDay() {
         return birtthDay;
     }
 
-    public void setBirtthDay(Date birtthDay) {
+    public void setBirtthDay(double birtthDay) {
         this.birtthDay = birtthDay;
     }
 
@@ -68,5 +68,16 @@ public abstract class Person {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "name='" + name + '\'' +
+                ", birtthDay=" + birtthDay +
+                ", gender='" + gender + '\'' +
+                ", numberIdentity=" + numberIdentity +
+                ", numberPhone=" + numberPhone +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

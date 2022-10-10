@@ -1,10 +1,19 @@
 package case_study.controllers;
 
+import case_study.model.person.Employee;
+import case_study.services.CustomerServiceImpl;
+import case_study.services.EmployeeServiceImpl;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FuramaController {
+    public static EmployeeServiceImpl list = new EmployeeServiceImpl();
+    public static CustomerServiceImpl customerList = new CustomerServiceImpl();
     public static void main(String[] args) {
         displayMainMenu();
+
+
     }
     public static Scanner sc = new Scanner(System.in);
     public static void displayMainMenu() {
@@ -65,12 +74,18 @@ public class FuramaController {
         switch (choice){
             case 1:
                 System.out.println("1\tDisplay list employees\n");
+                list.display();
+                employeeManager();
                 break;
             case 2:
                 System.out.println("2\tAdd new employee\n");
+                list.add();
+                employeeManager();
                 break;
             case 3:
                 System.out.println("3\tEdit employee\n");
+                list.edit();
+                employeeManager();
                 break;
             case 4:
                 displayMainMenu();
@@ -90,12 +105,18 @@ public class FuramaController {
         switch (choice){
             case 1:
                 System.out.println("1.\tDisplay list customers\n");
+                customerList.display();
+                customerManager();
                 break;
             case 2:
                 System.out.println("2.\tAdd new customer\n");
+                customerList.add();
+                customerManager();
                 break;
             case 3:
                 System.out.println("3.\tEdit customer\n");
+                customerList.edit();
+                customerManager();
                 break;
             case 4:
                 displayMainMenu();
@@ -132,7 +153,7 @@ public class FuramaController {
     public static void bookingManager(){
         System.out.println("1.\tAdd new booking\n" +
                 "2.\tDisplay list booking\n" +
-                "3.\tCreate new constracts\n" +
+                "3.\tCreate new contracts\n" +
                 "4.\tDisplay list contracts\n" +
                 "5.\tEdit contracts\n" +
                 "6.\tReturn main menu\n");
