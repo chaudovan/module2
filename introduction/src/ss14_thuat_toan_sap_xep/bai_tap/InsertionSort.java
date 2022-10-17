@@ -6,17 +6,15 @@ public class InsertionSort {
     static int[] arr = {9,10,-1,5,3,4,2,6};
     public static void insertionSort(int[] list){
         for (int i = 1; i <list.length ; i++) {
-             int x = list[i];
-             int j = i;
-             for( j = i ; j > 0 && x < list[j-1] ;j--){
-                 list[j] = list[j-1];
-             }
-//             j = i;
-//            while (j>0 && x<list[j-1]){
-//                list[j] = list[j-1];
-//                j--;
-//            }
-            list[j] =x;
+            for (int j = i; j >0 ; j--) {
+                if(list[j]<list[j-1]){
+                    int temp = list[j];
+                    list[j]=list[j-1];
+                    list[j-1]=temp;
+                }else {
+                    break;
+                }
+            }
         }
     }
 

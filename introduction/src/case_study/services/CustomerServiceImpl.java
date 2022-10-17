@@ -42,7 +42,7 @@ public class CustomerServiceImpl implements CustomerService {
             System.out.println("1.Diamond\t2.Platinium\t3.Gold\t4.Silver\t5.Member");
             System.out.print("Mời chọn loại khách hàng : ");
             choice = Integer.parseInt(sc.nextLine());
-        }while (choice<0 || choice>5);
+        }while (choice<1 || choice>5);
         switch (choice){
             case 1:
                 typeGuest = "Diamond";
