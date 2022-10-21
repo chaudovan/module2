@@ -7,12 +7,12 @@ public abstract class Facility {
     private double areaUse;
     private double cost;
     private int personMax;
-    private Date rent;
+    private String rent;
 
     public Facility() {
     }
 
-    public Facility(String nameService, double areaUse, double cost, int personMax, Date rent) {
+    public Facility(String nameService, double areaUse, double cost, int personMax, String rent) {
         this.nameService = nameService;
         this.areaUse = areaUse;
         this.cost = cost;
@@ -52,11 +52,11 @@ public abstract class Facility {
         this.personMax = personMax;
     }
 
-    public Date getRent() {
+    public String getRent() {
         return rent;
     }
 
-    public void setRent(Date rent) {
+    public void setRent(String rent) {
         this.rent = rent;
     }
 }

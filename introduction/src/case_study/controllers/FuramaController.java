@@ -3,6 +3,7 @@ package case_study.controllers;
 import case_study.model.person.Employee;
 import case_study.services.CustomerServiceImpl;
 import case_study.services.EmployeeServiceImpl;
+import case_study.services.FacilityServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,6 +11,7 @@ import java.util.Scanner;
 public class FuramaController {
     public static EmployeeServiceImpl list = new EmployeeServiceImpl();
     public static CustomerServiceImpl customerList = new CustomerServiceImpl();
+    public static FacilityServiceImpl facilityService = new FacilityServiceImpl();
     public static void main(String[] args) {
         displayMainMenu();
 
@@ -136,9 +138,13 @@ public class FuramaController {
         switch (choice){
             case 1:
                 System.out.println("1\tDisplay list facility\n");
+                facilityService.displayFacility();
+                facilityManager();
                 break;
             case 2:
                 System.out.println("2\tAdd new facility\n");
+                facilityService.add();
+                facilityManager();
                 break;
             case 3:
                 System.out.println("3\tDisplay list facility maintenance\n");
