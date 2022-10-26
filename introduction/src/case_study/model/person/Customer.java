@@ -10,7 +10,7 @@ public class Customer extends Person{
     public Customer() {
     }
 
-    public Customer(String name, double birtthDay, String gender, int numberIdentity, int numberPhone, String email, String idCustomer, String guest, String address) {
+    public Customer(String name, String birtthDay, String gender, int numberIdentity, int numberPhone, String email, String idCustomer, String guest, String address) {
         super(name, birtthDay, gender, numberIdentity, numberPhone, email);
         this.idCustomer = idCustomer;
         this.guest = guest;
@@ -39,5 +39,8 @@ public class Customer extends Person{
 
     public void setAddress(String address) {
         this.address = address;
+    }
+    public String getInFo(){
+        return this.idCustomer + "," +this.getName() + "," + this.getBirtthDay() + "," + this.getGender() +"," + this.getNumberIdentity() + "," + this.getNumberPhone() + "," + this.getEmail() + "," + this.guest + "," + this.address;
     }
 }

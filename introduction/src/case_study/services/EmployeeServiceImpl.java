@@ -3,21 +3,33 @@ package case_study.services;
 import case_study.model.person.Employee;
 
 import java.awt.dnd.DropTarget;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Scanner;
 
 public class EmployeeServiceImpl implements EmployeeService {
-    private ArrayList<Employee> list = new ArrayList();
+    private List<Employee> employeeList = new ArrayList();
     public static Scanner sc = new Scanner(System.in);
+    final String PATH = "src/case_study/data/employee.csv";
     @Override
-    public void add() {
+    public void add(){
+        List<String[]> list =WriteFileReadFile.readToFile(PATH);
+        employeeList.clear();
+
+        for (String[] item : list) {
+            Employee employee1 = new Employee(item[0], item[1], item[2], Integer.parseInt(item[3]),
+                    Integer.parseInt(item[4]), item[5], item[6],
+                    item[7], item[8], Double.parseDouble(item[9]));
+            employeeList.add(employee1);
+        }
         System.out.print("Nhập id : ");
         String id = sc.nextLine();
         System.out.println("nhập tên nhân viên");
         String name = sc.nextLine();
         System.out.print("Nhập năm sinh : ");
-        double date = sc.nextDouble();
+        String date = sc.nextLine();
         String gender;
         int num;
         do {
@@ -100,18 +112,34 @@ public class EmployeeServiceImpl implements EmployeeService {
             income = sc.nextDouble();
         }while (income<0);
         Employee employee = new Employee(name,date,gender,numberIdentity,numberPhone,email,id,levels,location,income);
-        list.add(employee);
+        employeeList.add(employee);
+        String str = "";
+        for (Employee item : employeeList) {
+            str += item.getInFo() + "\n";
+        }
+        WriteFileReadFile.writeToFile(PATH, str);
+        System.out.println("Thêm thành công");
         sc.nextLine();
     }
 
     @Override
     public void edit() {
+        List<String[]> list =WriteFileReadFile.readToFile(PATH);
+        employeeList.clear();
+
+        for (String[] item : list) {
+            Employee employee1 = new Employee(item[1], item[2], item[3],  Integer.parseInt(item[4]),
+                    Integer.parseInt(item[5]), item[6], item[0],
+                    item[7], item[8], Double.parseDouble(item[9]));
+
+            employeeList.add(employee1);
+        }
         System.out.print("Nhập id nhân viên cần sửa : ");
         String id = sc.nextLine();
         int index=0;
         boolean status = false;
-        for (int i = 0; i <list.size() ; i++) {
-            if(id.equals(list.get(i).getIdEmployee())){
+        for (int i = 0; i <employeeList.size() ; i++) {
+            if(id.equals(employeeList.get(i).getIdEmployee())){
                 status = true;
                 index=i;
             }
@@ -120,7 +148,7 @@ public class EmployeeServiceImpl implements EmployeeService {
             System.out.println("nhập tên nhân viên");
             String name = sc.nextLine();
             System.out.print("Nhập năm sinh : ");
-            double date = sc.nextDouble();
+            String date = sc.nextLine();
             String gender;
             int num;
             do {
@@ -203,7 +231,12 @@ public class EmployeeServiceImpl implements EmployeeService {
                 income = sc.nextDouble();
             } while (income < 0);
             Employee employee = new Employee(name,date,gender,numberIdentity,numberPhone,email,id,levels,location,income);
-            list.set(index,employee);
+            employeeList.set(index,employee);
+            String str = "";
+            for (Employee item : employeeList) {
+                str += item.getInFo() + "\n";
+            }
+            WriteFileReadFile.writeToFile(PATH, str);
             System.out.println("sửa thành công");
         }else{
             System.out.println("id không tồn tài");
@@ -213,12 +246,22 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void display() {
+        List<String[]> list =WriteFileReadFile.readToFile(PATH);
+        employeeList.clear();
+
+        for (String[] item : list) {
+            Employee employee1 = new Employee(item[1], item[2], item[3],  Integer.parseInt(item[4]),
+                    Integer.parseInt(item[5]), item[6], item[0],
+                    item[7], item[8], Double.parseDouble(item[9]));
+
+            employeeList.add(employee1);
+        }
         System.out.printf("|%16s|%16s|%16s|%16s|%16s|%16s|%16s|%16s|%16s|%16s|\n","ID","Name","BirthDay","Gender","CMND","Phone","Email","Level","Location","Luong");
         for (int i = 0; i <171; i++) {
             System.out.print("-");
         }
         System.out.println();
-        for (Employee employee:list){
+        for (Employee employee:employeeList){
             System.out.printf("|%16s|%16s|%16s|%16s|%16s|%16s|%16s|%16s|%16s|%16s|\n",employee.getIdEmployee(),employee.getName(),employee.getBirtthDay(),employee.getGender(),employee.getNumberIdentity(),employee.getNumberPhone(),employee.getEmail(),employee.getLevels(),employee.getLocation(),employee.getIncome());
         }
     }

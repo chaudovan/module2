@@ -20,6 +20,15 @@ public class Product implements Serializable {
         this.description = description;
     }
 
+    public Product(String str) {
+        String[] product = str.split(",");
+        this.idProduct = product[0];
+        this.nameProduct = product[1];
+        this.nameCompany = product[2];
+        this.cost = Double.parseDouble(product[3]);
+        this.description = product[4];
+    }
+
     public String getIdProduct() {
         return idProduct;
     }
@@ -68,5 +77,8 @@ public class Product implements Serializable {
                 ", cost=" + cost +
                 ", description='" + description + '\'' +
                 '}';
+    }
+    public String getInFor(){
+        return this.idProduct + "," + this.nameProduct + "," + this.nameCompany + "," + this.cost + "," + this.description;
     }
 }

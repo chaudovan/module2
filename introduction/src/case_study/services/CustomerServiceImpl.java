@@ -1,21 +1,32 @@
 package case_study.services;
 
 import case_study.model.person.Customer;
+import case_study.model.person.Employee;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 public class CustomerServiceImpl implements CustomerService {
-    LinkedList<Customer> customerLinkedList = new LinkedList<>();
+    List<Customer> customerLinkedList = new LinkedList<>();
     Scanner sc = new Scanner(System.in);
+    final String PATH = "src/case_study/data/customer.csv";
     @Override
     public void add() {
+        List<String[]> list =WriteFileReadFile.readToFile(PATH);
+        customerLinkedList.clear();
+
+        for (String[] item : list) {
+            Customer customer = new Customer(item[1], item[2], item[3], Integer.parseInt(item[4]),
+                    Integer.parseInt(item[5]), item[6], item[0], item[7], item[8]);
+            customerLinkedList.add(customer);
+        }
         System.out.print("nhập mã khách hàng : ");
         String id = sc.nextLine();
         System.out.print("Nhập tên khách hàng : ");
         String name = sc.nextLine();
         System.out.print("Nhập ngày sinh : ");
-        double date = Double.parseDouble(sc.nextLine());
+        String date = sc.nextLine();
         String gender;
         int num;
         do {
@@ -64,10 +75,24 @@ public class CustomerServiceImpl implements CustomerService {
         String address = sc.nextLine();
         Customer customer = new Customer(name,date,gender,numberIdentity,numberPhone,email,id,typeGuest,address);
         customerLinkedList.add(customer);
+        String str = "";
+        for (Customer item : customerLinkedList) {
+            str += item.getInFo() + "\n";
+        }
+        WriteFileReadFile.writeToFile(PATH, str);
+        System.out.println("thêm thành công");
     }
 
     @Override
     public void edit() {
+        List<String[]> list =WriteFileReadFile.readToFile(PATH);
+        customerLinkedList.clear();
+
+        for (String[] item : list) {
+            Customer customer = new Customer(item[1], item[2], item[3], Integer.parseInt(item[4]),
+                    Integer.parseInt(item[5]), item[6], item[0], item[7], item[8]);
+            customerLinkedList.add(customer);
+        }
         System.out.println("Nhập id khách cần chỉnh sửa : ");
         String id = sc.nextLine();
         int index = 0;
@@ -83,7 +108,7 @@ public class CustomerServiceImpl implements CustomerService {
             System.out.print("Nhập tên khách hàng : ");
             String name = sc.nextLine();
             System.out.print("Nhập ngày sinh : ");
-            double date = Double.parseDouble(sc.nextLine());
+            String date = sc.nextLine();
             String gender;
             int num;
             do {
@@ -104,7 +129,7 @@ public class CustomerServiceImpl implements CustomerService {
             System.out.print("Nhập email : ");
             String email = sc.nextLine();
             String typeGuest="";
-            int choice;
+            int choice=0;
             do{
                 System.out.println("Phân Loại khách hàng");
                 System.out.println("1.Diamond\t2.Platinium\t3.Gold\t4.Silver\t5.Member");
@@ -132,6 +157,11 @@ public class CustomerServiceImpl implements CustomerService {
             String address = sc.nextLine();
             Customer customer = new Customer(name,date,gender,numberIdentity,numberPhone,email,id,typeGuest,address);
             customerLinkedList.set(index,customer);
+            String str = "";
+            for (Customer item : customerLinkedList) {
+                str += item.getInFo() + "\n";
+            }
+            WriteFileReadFile.writeToFile(PATH, str);
             System.out.println("sửa ok");
         }else {
             System.out.println("id khách hàng không tồn tại");
@@ -140,6 +170,14 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void display() {
+        List<String[]> list =WriteFileReadFile.readToFile(PATH);
+        customerLinkedList.clear();
+
+        for (String[] item : list) {
+            Customer customer = new Customer(item[1], item[2], item[3], Integer.parseInt(item[4]),
+                    Integer.parseInt(item[5]), item[6], item[0], item[7], item[8]);
+            customerLinkedList.add(customer);
+        }
         for (int i = 0; i <154 ; i++) {
             System.out.print("-");
         }

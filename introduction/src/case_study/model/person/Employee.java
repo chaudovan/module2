@@ -11,7 +11,7 @@ public class Employee extends Person{
     public Employee() {
     }
 
-    public Employee(String name, double birtthDay, String gender, int numberIdentity, int numberPhone, String email, String idEmployee, String levels, String location, double income) {
+    public Employee(String name, String birtthDay, String gender, int numberIdentity, int numberPhone, String email, String idEmployee, String levels, String location, double income) {
         super(name, birtthDay, gender, numberIdentity, numberPhone, email);
         this.idEmployee = idEmployee;
         this.levels = levels;
@@ -59,5 +59,8 @@ public class Employee extends Person{
                 ", location='" + location + '\'' +
                 ", income=" + income +
                 '}';
+    }
+    public String getInFo(){
+        return this.idEmployee + "," +this.getName() + "," + this.getBirtthDay() + "," + this.getGender() +"," + this.getNumberIdentity() + "," + this.getNumberPhone() + "," + this.getEmail() + "," + this.levels + "," + this.location + "," + this.income;
     }
 }

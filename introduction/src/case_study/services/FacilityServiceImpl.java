@@ -5,6 +5,7 @@ import case_study.model.facility.Room;
 import case_study.model.facility.Villa;
 import java.io.*;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -13,6 +14,9 @@ public class FacilityServiceImpl implements FacilityService {
     private Map<Villa,Integer> villaArr = new LinkedHashMap<>();
     private Map<House,Integer> houseList = new LinkedHashMap<>();
     private Map<Room,Integer> roomList = new LinkedHashMap<>();
+    private final String PATH_ROOM = "src/case_study/data/room.csv";
+    private final String PATH_HOUSE = "src/case_study/data/house.csv";
+    private final String PATH_VILLA = "src/case_study/data/villa.csv";
     @Override
     public void add() {
         int choice;
@@ -97,6 +101,14 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     public void addNewVilla(){
+        List<String[]> list = WriteFileReadFile.readToFile(PATH_VILLA);
+        villaArr.clear();
+        for(String[] item:list){
+            Villa villa = new Villa(item[0],Double.parseDouble(item[1]),Double.parseDouble(item[2]),Integer.parseInt(item[3]),item[4],item[5],
+                    Double.parseDouble(item[6]),Double.parseDouble(item[7]));
+            int number = Integer.parseInt(item[8]);
+            villaArr.put(villa,number);
+        }
         System.out.println("nhập tên dịch vụ :");
         String nameService = sc.nextLine();
         System.out.println("nhập diện tích sử dụng :");
@@ -115,6 +127,15 @@ public class FacilityServiceImpl implements FacilityService {
         double floors = Double.parseDouble(sc.nextLine());
         Villa villa = new Villa(nameService,areaUse,cost,personMax,rent,roomStandard,areaPool,floors);
         villaArr.put(villa,0);
+        String str = "";
+        for (Map.Entry<Villa,Integer> item: villaArr.entrySet()){
+            str += item.getKey().getNameService() + "," +item.getKey().getAreaUse() + "," +
+                    item.getKey().getCost() + "," + item.getKey().getPersonMax() + "," +item.getKey().getRent() +"," +
+                    item.getKey().getRoomStandard() + "," + item.getKey().getAreaPool() +"," +item.getKey().getFloors()
+                    + "," +item.getValue();
+        }
+        WriteFileReadFile.writeToFile(PATH_VILLA,str);
+        System.out.println("thêm thành công");
     }
     public void addNewHouse(){
         System.out.println("nhập tên dịch vụ :");

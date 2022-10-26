@@ -11,26 +11,27 @@ public class Main {
     public static Scanner sc = new Scanner(System.in);
     public static List<Product> products = new ArrayList<>();
     public static void writeToFile(String path, List<Product> products) {
-        try {
-            FileOutputStream fos = new FileOutputStream(path);
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(products);
-            oos.close();
-            fos.close();
+        try (BufferedWriter buffered = new BufferedWriter(new FileWriter(path, true))){
+            for (Product product:products){
+                buffered.write(product.getInFor());
+                buffered.newLine();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     public static List<Product> readDataFromFile(String path){
         List<Product> products = new ArrayList<>();
-        try{
-            FileInputStream fis = new FileInputStream(path);
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            products = (List<Product>) ois.readObject();
-            fis.close();
-            ois.close();
-        }catch(Exception ex){
-            ex.printStackTrace();
+        try (BufferedReader reader = new BufferedReader(new FileReader(path))){
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                if (line.trim().equals("")) {
+                    continue;
+                }
+                products.add(new Product(line));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return products;
     }
@@ -41,8 +42,20 @@ public class Main {
         String nameProduct = sc.nextLine();
         System.out.println("Nhà sản xuất của sản phẩm :");
         String nameCompany = sc.nextLine();
-        System.out.println("nhập giá của sản phẩm :");
-        double cost = Double.parseDouble(sc.nextLine());
+        double cost=0;
+        boolean check;
+        do {
+            check=false;
+            try{
+                System.out.println("nhập giá của sản phẩm :");
+                cost = Double.parseDouble(sc.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println("nhập sai định dạng,phải nhập số");
+                check=true;
+            }
+        }while (check);
+
+
         System.out.println("mô tả khác của sản phẩm :");
         String description = sc.nextLine();
         Product product = new Product(idProduct,nameProduct,nameCompany,cost,description);
@@ -50,9 +63,14 @@ public class Main {
         writeToFile("src/ss17_doc_file_ghi_file/bai_tap/product.txt",products);
     }
     public static void display(){
+        System.out.printf("|%16s|%20s|%20s|%20s|%20s|\n","ID","NameProduct","NameCompany","Cost","Description");
+        for (int i = 0; i <104 ; i++) {
+            System.out.print("-");
+        }
+        System.out.println();
         List<Product> productsData = readDataFromFile("src/ss17_doc_file_ghi_file/bai_tap/product.txt");
         for (Product product : productsData){
-            System.out.println(product);
+            System.out.printf("|%16s|%20s|%20s|%20s|%20s|\n",product.getIdProduct(),product.getNameProduct(),product.getNameCompany(),product.getCost(),product.getDescription());
         }
     }
     public static void search(String name){
@@ -70,14 +88,18 @@ public class Main {
     }
     public static void main(String[] args) {
         System.out.println("Menu------------");
-        int choice;
+        int choice=0;
         do{
             System.out.println("1.\tAdd new product\n" +
                     "2.\tDisplay Product\n" +
                     "3.\tSearch Product\n" +
                     "4.\texits");
             System.out.println("mời chọn chức năng");
-            choice = Integer.parseInt(sc.nextLine());
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println("nhập sai định dang, nhập lại");
+            }
             switch (choice){
                 case 1:
                     addProduct();
@@ -95,13 +117,5 @@ public class Main {
             }
         }while (true);
 
-//        for (int i = 0; i <3 ; i++) {
-//            System.out.println("sản phẩm thứ " + (i+1) + " :");
-//            addProduct();
-//        }
-////        display();
-//        System.out.println("nhập tên sản phẩm cần tìm :");
-//        String name = sc.nextLine();
-//        search(name);
     }
 }

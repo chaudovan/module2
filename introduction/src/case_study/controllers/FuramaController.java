@@ -19,7 +19,7 @@ public class FuramaController {
     }
     public static Scanner sc = new Scanner(System.in);
     public static void displayMainMenu() {
-        int choice;
+        int choice=0;
         do {
             System.out.println("Menu-------------");
             System.out.println("" +
@@ -30,7 +30,11 @@ public class FuramaController {
                     "5.\tPromotion Management\n" +
                     "6.\tExit\n");
             System.out.println("Mời chọn Chức năng : ");
-            choice = sc.nextInt();
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println("nhập sai định dạng , mời nhập lại");
+            }
             switch (choice) {
                 case 1:
                     System.out.print("1.\tEmployee Management");
@@ -71,8 +75,11 @@ public class FuramaController {
                 "3\tEdit employee\n" +
                 "4\tReturn main menu\n");
         int choice =0;
-        System.out.println("Nhập chức năng : ");
-        choice = sc.nextInt();
+        try {
+            choice = Integer.parseInt(sc.nextLine());
+        }catch (NumberFormatException e){
+            System.out.println("nhập sai định dạng , mời nhập lại");
+        }
         switch (choice){
             case 1:
                 System.out.println("1\tDisplay list employees\n");
@@ -102,8 +109,11 @@ public class FuramaController {
                 "3.\tEdit customer\n" +
                 "4.\tReturn main menu\n");
         int choice =0;
-        System.out.println("Nhập chức năng : ");
-        choice = sc.nextInt();
+        try {
+            choice = Integer.parseInt(sc.nextLine());
+        }catch (NumberFormatException e){
+            System.out.println("nhập sai định dạng , mời nhập lại");
+        }
         switch (choice){
             case 1:
                 System.out.println("1.\tDisplay list customers\n");
@@ -133,8 +143,11 @@ public class FuramaController {
                 "3\tDisplay list facility maintenance\n" +
                 "4\tReturn main menu\n");
         int choice =0;
-        System.out.println("Nhập chức năng : ");
-        choice = sc.nextInt();
+        try {
+            choice = Integer.parseInt(sc.nextLine());
+        }catch (NumberFormatException e){
+            System.out.println("nhập sai định dạng , mời nhập lại");
+        }
         switch (choice){
             case 1:
                 System.out.println("1\tDisplay list facility\n");
@@ -164,8 +177,11 @@ public class FuramaController {
                 "5.\tEdit contracts\n" +
                 "6.\tReturn main menu\n");
         int choice =0;
-        System.out.println("Nhập chức năng : ");
-        choice = sc.nextInt();
+        try {
+            choice = Integer.parseInt(sc.nextLine());
+        }catch (NumberFormatException e){
+            System.out.println("nhập sai định dạng , mời nhập lại");
+        }
         switch (choice){
             case 1:
                 System.out.println("1.\tAdd new booking\n");
@@ -194,8 +210,11 @@ public class FuramaController {
                 "2.\tDisplay list customers get voucher\n" +
                 "3.\tReturn main menu\n");
         int choice =0;
-        System.out.println("Nhập chức năng : ");
-        choice = sc.nextInt();
+        try {
+            choice = Integer.parseInt(sc.nextLine());
+        }catch (NumberFormatException e){
+            System.out.println("nhập sai định dạng , mời nhập lại");
+        }
         switch (choice){
             case 1:
                 System.out.println("1.\tDisplay list customers use service\n");
