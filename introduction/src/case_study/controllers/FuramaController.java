@@ -70,163 +70,178 @@ public class FuramaController {
         } while (true);
     }
     public static void employeeManager(){
-        System.out.println("1\tDisplay list employees\n" +
-                "2\tAdd new employee\n" +
-                "3\tEdit employee\n" +
-                "4\tReturn main menu\n");
-        int choice =0;
-        try {
-            choice = Integer.parseInt(sc.nextLine());
-        }catch (NumberFormatException e){
-            System.out.println("nhập sai định dạng , mời nhập lại");
-        }
-        switch (choice){
-            case 1:
-                System.out.println("1\tDisplay list employees\n");
-                list.display();
-                employeeManager();
-                break;
-            case 2:
-                System.out.println("2\tAdd new employee\n");
-                list.add();
-                employeeManager();
-                break;
-            case 3:
-                System.out.println("3\tEdit employee\n");
-                list.edit();
-                employeeManager();
-                break;
-            case 4:
-                displayMainMenu();
-                break;
-            default:
-                System.out.println("nhập tư 1 - 4");
-        }
+        int choice = 0;
+        do {
+            System.out.println("1\tDisplay list employees\n" +
+                    "2\tAdd new employee\n" +
+                    "3\tEdit employee\n" +
+                    "4\tReturn main menu\n");
+            System.out.println("Mời chọn Chức năng : ");
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("nhập sai định dạng , mời nhập lại");
+            }
+            switch (choice) {
+                case 1:
+                    System.out.println("1\tDisplay list employees\n");
+                    list.display();
+                    employeeManager();
+                    break;
+                case 2:
+                    System.out.println("2\tAdd new employee\n");
+                    list.add();
+                    employeeManager();
+                    break;
+                case 3:
+                    System.out.println("3\tEdit employee\n");
+                    list.edit();
+                    employeeManager();
+                    break;
+                case 4:
+                    displayMainMenu();
+                    break;
+                default:
+                    System.out.println("nhập tư 1 - 4");
+            }
+        }while (true);
     }
     public static void customerManager(){
-        System.out.println("1.\tDisplay list customers\n" +
-                "2.\tAdd new customer\n" +
-                "3.\tEdit customer\n" +
-                "4.\tReturn main menu\n");
-        int choice =0;
-        try {
-            choice = Integer.parseInt(sc.nextLine());
-        }catch (NumberFormatException e){
-            System.out.println("nhập sai định dạng , mời nhập lại");
-        }
-        switch (choice){
-            case 1:
-                System.out.println("1.\tDisplay list customers\n");
-                customerList.display();
-                customerManager();
-                break;
-            case 2:
-                System.out.println("2.\tAdd new customer\n");
-                customerList.add();
-                customerManager();
-                break;
-            case 3:
-                System.out.println("3.\tEdit customer\n");
-                customerList.edit();
-                customerManager();
-                break;
-            case 4:
-                displayMainMenu();
-                break;
-            default:
-                System.out.println("nhập tư 1 - 4");
-        }
+        int choice = 0;
+        do {
+            System.out.println("1.\tDisplay list customers\n" +
+                    "2.\tAdd new customer\n" +
+                    "3.\tEdit customer\n" +
+                    "4.\tReturn main menu\n");
+            System.out.println("Mời chọn Chức năng : ");
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("nhập sai định dạng , mời nhập lại");
+            }
+            switch (choice) {
+                case 1:
+                    System.out.println("1.\tDisplay list customers\n");
+                    customerList.display();
+                    customerManager();
+                    break;
+                case 2:
+                    System.out.println("2.\tAdd new customer\n");
+                    customerList.add();
+                    customerManager();
+                    break;
+                case 3:
+                    System.out.println("3.\tEdit customer\n");
+                    customerList.edit();
+                    customerManager();
+                    break;
+                case 4:
+                    displayMainMenu();
+                    break;
+                default:
+                    System.out.println("nhập tư 1 - 4");
+            }
+        }while (true);
     }
     public static void facilityManager(){
-        System.out.println("1\tDisplay list facility\n" +
-                "2\tAdd new facility\n" +
-                "3\tDisplay list facility maintenance\n" +
-                "4\tReturn main menu\n");
-        int choice =0;
-        try {
-            choice = Integer.parseInt(sc.nextLine());
-        }catch (NumberFormatException e){
-            System.out.println("nhập sai định dạng , mời nhập lại");
-        }
-        switch (choice){
-            case 1:
-                System.out.println("1\tDisplay list facility\n");
-                facilityService.displayFacility();
-                facilityManager();
-                break;
-            case 2:
-                System.out.println("2\tAdd new facility\n");
-                facilityService.add();
-                facilityManager();
-                break;
-            case 3:
-                System.out.println("3\tDisplay list facility maintenance\n");
-                break;
-            case 4:
-                displayMainMenu();
-                break;
-            default:
-                System.out.println("nhập tư 1 - 4");
-        }
+        int choice = 0;
+        do {
+            System.out.println("1\tDisplay list facility\n" +
+                    "2\tAdd new facility\n" +
+                    "3\tDisplay list facility maintenance\n" +
+                    "4\tReturn main menu\n");
+            System.out.println("Mời chọn Chức năng : ");
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("nhập sai định dạng , mời nhập lại");
+            }
+            switch (choice) {
+                case 1:
+                    System.out.println("1\tDisplay list facility\n");
+                    facilityService.displayFacility();
+                    facilityManager();
+                    break;
+                case 2:
+                    System.out.println("2\tAdd new facility\n");
+                    facilityService.add();
+                    facilityManager();
+                    break;
+                case 3:
+                    System.out.println("3\tDisplay list facility maintenance\n");
+                    break;
+                case 4:
+                    displayMainMenu();
+                    break;
+                default:
+                    System.out.println("nhập tư 1 - 4");
+            }
+        }while (true);
     }
     public static void bookingManager(){
-        System.out.println("1.\tAdd new booking\n" +
-                "2.\tDisplay list booking\n" +
-                "3.\tCreate new contracts\n" +
-                "4.\tDisplay list contracts\n" +
-                "5.\tEdit contracts\n" +
-                "6.\tReturn main menu\n");
-        int choice =0;
-        try {
-            choice = Integer.parseInt(sc.nextLine());
-        }catch (NumberFormatException e){
-            System.out.println("nhập sai định dạng , mời nhập lại");
-        }
-        switch (choice){
-            case 1:
-                System.out.println("1.\tAdd new booking\n");
-                break;
-            case 2:
-                System.out.println("2.\tDisplay list booking\n");
-                break;
-            case 3:
-                System.out.println("3.\tCreate new constracts\n");
-                break;
-            case 4:
-                System.out.println("4.\tDisplay list contracts\n");
-                break;
-            case 5:
-                System.out.println("5.\tEdit contracts\n");
-                break;
-            case 6:
-                displayMainMenu();
-                break;
-            default:
-                System.out.println("nhập tư 1 - 6");
-        }
+        int choice = 0;
+        do {
+            System.out.println("1.\tAdd new booking\n" +
+                    "2.\tDisplay list booking\n" +
+                    "3.\tCreate new contracts\n" +
+                    "4.\tDisplay list contracts\n" +
+                    "5.\tEdit contracts\n" +
+                    "6.\tReturn main menu\n");
+            System.out.println("Mời chọn Chức năng : ");
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("nhập sai định dạng , mời nhập lại");
+            }
+            switch (choice) {
+                case 1:
+                    System.out.println("1.\tAdd new booking\n");
+                    break;
+                case 2:
+                    System.out.println("2.\tDisplay list booking\n");
+                    break;
+                case 3:
+                    System.out.println("3.\tCreate new constracts\n");
+                    break;
+                case 4:
+                    System.out.println("4.\tDisplay list contracts\n");
+                    break;
+                case 5:
+                    System.out.println("5.\tEdit contracts\n");
+                    break;
+                case 6:
+                    displayMainMenu();
+                    break;
+                default:
+                    System.out.println("nhập tư 1 - 6");
+            }
+        }while (true);
     }
-    public static void promotionManager(){
-        System.out.println("1.\tDisplay list customers use service\n" +
-                "2.\tDisplay list customers get voucher\n" +
-                "3.\tReturn main menu\n");
-        int choice =0;
-        try {
-            choice = Integer.parseInt(sc.nextLine());
-        }catch (NumberFormatException e){
-            System.out.println("nhập sai định dạng , mời nhập lại");
-        }
-        switch (choice){
-            case 1:
-                System.out.println("1.\tDisplay list customers use service\n");
-                break;
-            case 2:
-                System.out.println("2.\tDisplay list customers get voucher\n");
-                break;
-            case 3:
-                displayMainMenu();
-                break;
-            default:
-                System.out.println("nhập tư 1 - 3");
-        }
+    public static void promotionManager() {
+        int choice = 0;
+        do {
+            System.out.println("1.\tDisplay list customers use service\n" +
+                    "2.\tDisplay list customers get voucher\n" +
+                    "3.\tReturn main menu\n");
+            System.out.println("Mời chọn Chức năng : ");
+            try {
+                choice = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("nhập sai định dạng , mời nhập lại");
+            }
+            switch (choice) {
+                case 1:
+                    System.out.println("1.\tDisplay list customers use service\n");
+                    break;
+                case 2:
+                    System.out.println("2.\tDisplay list customers get voucher\n");
+                    break;
+                case 3:
+                    displayMainMenu();
+                    break;
+                default:
+                    System.out.println("nhập tư 1 - 3");
+            }
+        }while (true);
     }
 }

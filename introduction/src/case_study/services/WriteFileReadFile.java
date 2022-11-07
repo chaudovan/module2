@@ -13,9 +13,22 @@ import java.util.Collections;
 import java.util.List;
 
 public class WriteFileReadFile {
+//    public static  void write(String path,List<Employee> employees){
+//        try(BufferedWriter bufferedWriter =new BufferedWriter(new FileWriter(path))){
+//            for(Employee employee:employees){
+//                bufferedWriter.write(employee.getInFo());
+//                bufferedWriter.newLine();
+//            }
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }
+//    }
 
     public static void writeToFile(String pathFile, String data) {
         File file = new File(pathFile);
+        if(!file.exists()){
+            System.out.println("file không tồn tại hoặc sai đường dẫn");
+        }
         try (FileWriter fileWriter = new FileWriter(file);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
             bufferedWriter.write(data);

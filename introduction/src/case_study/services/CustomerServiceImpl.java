@@ -40,10 +40,29 @@ public class CustomerServiceImpl implements CustomerService {
         }else{
             gender ="nữ";
         }
-        System.out.print("nhập số CMND : ");
-        int numberIdentity = Integer.parseInt(sc.nextLine());
-        System.out.print("nhập số điện thoại : ");
-        int numberPhone = Integer.parseInt(sc.nextLine());
+        int numberIdentity = 0;
+        int numberPhone = 0;
+        boolean check;
+        do {
+            check=false;
+            try {
+                System.out.println("nhập số CMND : ");
+                numberIdentity = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("nhạp sai định dạng");
+                check=true;
+            }
+        }while (check);
+        do {
+            check=false;
+            System.out.println("Nhập số điện thoại : ");
+            try {
+                numberPhone = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("nhập sai dịnh dạng");
+                check =true;
+            }
+        }while (check);
         System.out.print("Nhập email : ");
         String email = sc.nextLine();
         String typeGuest="";
@@ -122,10 +141,29 @@ public class CustomerServiceImpl implements CustomerService {
             }else{
                 gender ="nữ";
             }
-            System.out.print("nhập số CMND : ");
-            int numberIdentity = Integer.parseInt(sc.nextLine());
-            System.out.print("nhập số điện thoại : ");
-            int numberPhone = Integer.parseInt(sc.nextLine());
+            int numberIdentity = 0;
+            int numberPhone = 0;
+            boolean check;
+            do {
+                check=false;
+                try {
+                    System.out.println("nhập số CMND : ");
+                    numberIdentity = Integer.parseInt(sc.nextLine());
+                } catch (NumberFormatException e) {
+                    System.out.println("nhạp sai định dạng");
+                    check=true;
+                }
+            }while (check);
+            do {
+                check=false;
+                System.out.println("Nhập số điện thoại : ");
+                try {
+                    numberPhone = Integer.parseInt(sc.nextLine());
+                } catch (NumberFormatException e) {
+                    System.out.println("nhập sai dịnh dạng");
+                    check =true;
+                }
+            }while (check);
             System.out.print("Nhập email : ");
             String email = sc.nextLine();
             String typeGuest="";
