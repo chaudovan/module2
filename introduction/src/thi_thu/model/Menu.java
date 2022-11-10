@@ -59,6 +59,7 @@ public class Menu{
             for (AccountLessor accountLessor : list_accountLessor) {
                 if (CCCD.equals(accountLessor.getCCCD())) {
                     System.out.println("CCCD " + CCCD + " đã tồn tại");
+                    System.out.println(accountLessor.toString());
                     check=true;
                 }
             }
@@ -118,7 +119,7 @@ public class Menu{
             @Override
             public int compare(AccountLessor o1, AccountLessor o2) {
                 if(o1.getHoVaten().equals(o2.getHoVaten())){
-                    o1.getNgaySinh().compareTo(o2.getNgaySinh());
+                    return o1.getNgaySinh().compareTo(o2.getNgaySinh());
                 }
                 return o1.getHoVaten().compareTo(o2.getHoVaten());
             }

@@ -1,16 +1,11 @@
-package thi_thu.model;
+package bai_tap_lon.until;
 
-import javax.xml.crypto.Data;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.Date;
 import java.util.Scanner;
-import java.util.regex.Pattern;
-
+//[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}
 public class RegexData {
     public static Scanner sc = new Scanner(System.in);
     public static String regex(String temp, String regex, String error) {
@@ -26,7 +21,7 @@ public class RegexData {
         return temp;
     }
 
-    public static Date validateDate(String dateAsString) throws AgeException {
+    public static Date validateDate(String dateAsString)  {
         SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
         format.setLenient(false);
         Date result = null;
@@ -38,7 +33,7 @@ public class RegexData {
         }
         Date now = new Date();
         if (now.getYear() - result.getYear() < 18) {
-            throw new AgeException("Account chua du 18 tuoi");
+            System.out.println("Account chua du 18 tuoi");
         }
         return result;
     }
